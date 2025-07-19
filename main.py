@@ -45,6 +45,13 @@ parser.add_argument(
     required=False,
     default="00:00",
 )
+parser.add_argument(
+    "-q",
+    "--quiet",
+    help="Print only the available destinations, sorted and without the time",
+    required=False,
+    action="store_true",
+)
 args = parser.parse_args()
 
 depart = args.depart
@@ -52,11 +59,13 @@ arrivee = args.arrivee
 date = args.date
 hour = args.hour
 force_maxsteps = args.force
+quiet = args.quiet
 steps = int(args.steps)
 
 # Corps
-print("\n\n")
-print(ascii_art.welcome_message(shutil.get_terminal_size().columns))
+if not quiet:
+    print("\n\n")
+    print(ascii_art.welcome_message(shutil.get_terminal_size().columns))
 
 # import des gares depuis le fichier txt
 
@@ -75,13 +84,15 @@ if args.list_gares:
     exit()
 
 if args.propale:
-    print("Trains TGVmax disponibles depuis " + depart + " le " + date)
+    if not quiet:
+        print("Trains TGVmax disponibles depuis " + depart + " le " + date)
     trains = api_requests.check_available_gares(
         argument_check.formalize_gare(depart), date, hour
     )
     for train in trains:
         print("Vers la gare de " + train[1])
-        print("Heure de départ : " + train[2] + " Heure d'arrivée : " + train[3])
+        if not quiet:
+            print("Heure de départ : " + train[2] + " Heure d'arrivée : " + train[3])
     exit()
 
 # vérification des arguments et formalisation des gares
