@@ -90,9 +90,11 @@ if args.propale:
         argument_check.formalize_gare(depart), date, hour
     )
     for train in trains:
-        print("Vers la gare de " + train[1])
         if not quiet:
+            print("Vers la gare de " + train[1])
             print("Heure de départ : " + train[2] + " Heure d'arrivée : " + train[3])
+        else:
+            print("Heure de départ : " + train[2] + "\tHeure d'arrivée : " + train[3] + "\tVers la gare de " + train[1])
     exit()
 
 # vérification des arguments et formalisation des gares
