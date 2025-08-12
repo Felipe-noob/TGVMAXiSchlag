@@ -94,7 +94,7 @@ if args.propale:
             print("Vers la gare de " + train[1])
             print("Heure de départ : " + train[2] + " Heure d'arrivée : " + train[3])
         else:
-            print("Heure de départ : " + train[2] + "\tHeure d'arrivée : " + train[3] + "\tVers la gare de " + train[1])
+            print("Départ : " + train[2] + "\tArrivée : " + train[3] + "\tVers " + train[1]+" depuis " + depart)
     exit()
 
 # vérification des arguments et formalisation des gares
