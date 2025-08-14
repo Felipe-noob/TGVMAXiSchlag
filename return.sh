@@ -1,6 +1,6 @@
 #!/usr/bin/zsh
 
-return_date="2025-08-26"
+return_date=$1
 destination="PARIS (intramuros)"
 
 file_name="$destination-$return_date.txt"
