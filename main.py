@@ -129,36 +129,36 @@ else:
         + date
     )
 
-print("")
-print("Recherche de trajets avec étapes...")
-print("")
+if steps > 1:
+    print("")
+    print("Recherche de trajets avec étapes...")
+    print("")
 
+    print("Tentative de trouver des trajets avec ", steps, " étapes...")
 
-print("Tentative de trouver des trajets avec ", steps, " étapes...")
+    all_compatible_journey = []
+    recursive_checker.gare_checker(
+        all_compatible_journey, arrivee, depart, date, [], steps, force_maxsteps, hour
+    )
 
-all_compatible_journey = []
-recursive_checker.gare_checker(
-    all_compatible_journey, arrivee, depart, date, [], steps, force_maxsteps, hour
-)
-
-if len(all_compatible_journey) > 0:
-    print("\n####################################\n")
-    print("Récapitulatif des différents trajets trouvés :")
-    for trajet in all_compatible_journey:
-        print("Trajet :")
-        for i in range(len(trajet)):
-            train = trajet[i]
-            print("Train ", i + 1)
-            print(
-                "Départ de ",
-                train[0],
-                " à ",
-                train[2],
-                " ---> Arrivée à ",
-                train[1],
-                " à ",
-                train[3],
-            )
-        print("------------------")
-else:
-    print("Aucun train trouvé, essayez avec plus d'étapes !")
+    if len(all_compatible_journey) > 0:
+        print("\n####################################\n")
+        print("Récapitulatif des différents trajets trouvés :")
+        for trajet in all_compatible_journey:
+            print("Trajet :")
+            for i in range(len(trajet)):
+                train = trajet[i]
+                print("Train ", i + 1)
+                print(
+                    "Départ de ",
+                    train[0],
+                    " à ",
+                    train[2],
+                    " ---> Arrivée à ",
+                    train[1],
+                    " à ",
+                    train[3],
+                )
+            print("------------------")
+    else:
+        print("Aucun train trouvé, essayez avec plus d'étapes !")
