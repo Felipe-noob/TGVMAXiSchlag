@@ -119,8 +119,11 @@ if len(available_trains) > 0:
              + date
         )
         print("Voici les trains disponibles :")
-    for train in available_trains:
-        print("Heure de départ : " + train[2] + " Heure d'arrivée : " + train[3])
+        for train in available_trains:
+            print("Heure de départ : " + train[2] + " Heure d'arrivée : " + train[3])
+    else:
+        for train in available_trains:
+            print("Départ : " + train[2] + "\tArrivée : " + train[3] + "\tVers " + train[1]+" depuis " + depart)
 else:
     print(
         "Il n'existe pas de trajet direct entre "
