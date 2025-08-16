@@ -86,6 +86,7 @@ if args.list_gares:
 if args.propale:
     if not quiet:
         print("Trains TGVmax disponibles depuis " + depart + " le " + date)
+
     trains = api_requests.check_available_gares(
         argument_check.formalize_gare(depart), date, hour
     )
@@ -108,15 +109,16 @@ arrivee_req = argument_check.formalize_gare(arrivee)
 available_trains = api_requests.simple_request(depart_req, arrivee_req, date, hour)
 
 if len(available_trains) > 0:
-    print(
-        "Il existe au moins un trajet direct entre "
-        + depart
-        + " et "
-        + arrivee
-        + " le "
-        + date
-    )
-    print("Voici les trains disponibles :")
+    if not quiet:
+        print(
+            "Il existe au moins un trajet direct entre "
+             + depart
+             + " et "
+             + arrivee
+             + " le "
+             + date
+        )
+        print("Voici les trains disponibles :")
     for train in available_trains:
         print("Heure de départ : " + train[2] + " Heure d'arrivée : " + train[3])
 else:
