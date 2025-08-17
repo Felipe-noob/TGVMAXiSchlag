@@ -20,3 +20,4 @@ tmp_file=$(mktemp)
 grep Départ "$file_name" > "$tmp_file"
 mv "$tmp_file" "$file_name"
 
+car "$file_name" | cut -f 3 | uniq -c > "$file_name.simple"
