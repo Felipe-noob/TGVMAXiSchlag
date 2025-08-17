@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 return_date=$1
 destination="PARIS (intramuros)"
 
@@ -14,7 +16,6 @@ while IFS= read -r line; do
       | tee --append "$file_name";
 done < destinaisons.txt
 
-return
 tmp_file=$(mktemp)
 grep Départ "$file_name" > "$tmp_file"
 mv "$tmp_file" "$file_name"
