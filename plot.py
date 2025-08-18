@@ -11,17 +11,17 @@ df.dropna(
     inplace=True
 )
 
-color_scale = [(0, 'orange'), (1,'red')]
+# color_scale = [(0, 'orange'), (1,'red')]
 
-fig = px.scatter_mapbox(df, 
-                        lat="Lat", 
-                        lon="Long", 
-                        hover_name="Address", 
-                        hover_data=["Address", "Listed"],
-                        color="Listed",
-                        color_continuous_scale=color_scale,
-                        size="Listed",
-                        zoom=8, 
+fig = px.scatter_mapbox(df,
+                        lat="Lat",
+                        lon="Long",
+                        hover_name="Address",
+                        hover_data=["Address"],
+                        # color="Listed",
+                        # color_continuous_scale=color_scale,
+                        # size="Listed",
+                        zoom=5,
                         height=800,
                         width=800)
 
