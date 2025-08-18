@@ -7,7 +7,7 @@ destination="PARIS (intramuros)"
 
 destination_sed=$(echo $destination | sed 's/ /_/g')
 file_name="output/$destination_sed-$return_date.txt"
-rm "$file_name"
+rm -v -f "$file_name"
 
 while IFS= read -r line; do
   python main.py \
@@ -20,4 +20,4 @@ tmp_file=$(mktemp)
 grep Départ "$file_name" > "$tmp_file"
 mv "$tmp_file" "$file_name"
 
-car "$file_name" | cut -f 3 | uniq -c > "$file_name.simple"
+cat "$file_name" | cut -f 3 | uniq -c > "$file_name.simple"
