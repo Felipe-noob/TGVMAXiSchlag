@@ -16,8 +16,15 @@ while IFS= read -r line; do
       | tee --append "$file_name";
 done < destinaisons.txt
 
+# create a more readable file only with the names
 tmp_file=$(mktemp)
 grep Départ "$file_name" > "$tmp_file"
 mv "$tmp_file" "$file_name"
 
-cat "$file_name" | cut -f 3 | uniq -c > "$file_name.simple"
+cat "$file_name" \
+  | cut -f 3 \
+  | uniq -c \
+  | sed 's/.* depuis//' \
+  > "$file_name.simple"
+
+# create a file with coordinates
