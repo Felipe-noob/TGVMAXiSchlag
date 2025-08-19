@@ -15,6 +15,24 @@ while IFS= read -r line; do
     | sed 's/(INTRAMUROS)//' \
   )
 
+  if [[ $line = "L'ARGENTIERE LES ECRINS   (05)" ]]
+    then line_filtered="L'ARGENTIERE-LES-ECRINS"
+  elif [[ $line = "MOUTIERS SALINS BRIDES L BAINS" ]]
+    then line_filtered="MOUTIERS-SALINS-BRIDES-LES-BAINS"
+  elif [[ $line = "VITRY LE FRANCOIS GARE" ]]
+    then line_filtered="VITRY-LE-FRANCOIS"
+  elif [[ $line = "MONTELIMAR GARE SNCF" ]]
+    then line_filtered="MONTELIMAR"
+  elif [[ $line = "ST MAIXENT DEUX SEVRES" ]]
+    then line_filtered="MAIXENT"
+  elif [[ $line = "CAUSSADE TARN ET GARONNE" ]]
+    then line_filtered="CAUSSADE"
+  elif [[ $line = "MASSIAC BLESLE" ]]
+    then line_filtered="MASSIAC"
+  elif [[ $line = "BESANCON - F COMTE TGV" ]]
+    then line_filtered="BESANCON-FRANCHE"
+  fi
+
   coordinates=$( \
     cat flat-liste-des-gares.csv \
     | tr "[:lower:]" "[:upper:]" \
