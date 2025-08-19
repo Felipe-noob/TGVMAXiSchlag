@@ -31,6 +31,10 @@ while IFS= read -r line; do
     then line_filtered="MASSIAC"
   elif [[ $line = "BESANCON - F COMTE TGV" ]]
     then line_filtered="BESANCON-FRANCHE"
+  elif [[ $line = "VALENCE TGV RHONE-ALPES SUD" ]]
+    then line_filtered="VALENCE"
+  elif [[ $line = "AEROPORT CDG2 TGV ROISSY" ]]
+    then line_filtered="AEROPORT-CHARLES-DE-GAULLE-2"
   fi
 
   coordinates=$( \
