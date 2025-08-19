@@ -27,8 +27,9 @@ fig = px.scatter_map(df,
                         # size="Listed",
                         zoom=5,
                         height=800,
-                        width=800)
+                        width=800,
+                        title=csvfile)
 
 fig.update_layout(mapbox_style="open-street-map")
-fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+fig.update_layout(margin={"r":0,"t":40,"l":0,"b":0})
 fig.show()
