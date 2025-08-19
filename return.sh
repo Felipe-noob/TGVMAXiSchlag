@@ -28,3 +28,5 @@ cat "$file_name" \
   > "$file_name.simple"
 
 # create a file with coordinates
+./prepareplot.sh "$file_name.simple"
+python plot.py "$file_name.simple.csv"
