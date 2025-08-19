@@ -24,7 +24,7 @@ mv "$tmp_file" "$file_name"
 cat "$file_name" \
   | cut -f 3 \
   | uniq -c \
-  | sed 's/.* depuis//' \
+  | sed 's/.* depuis //' \
   > "$file_name.simple"
 
 # create a file with coordinates
