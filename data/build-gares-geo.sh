@@ -16,7 +16,7 @@ while IFS= read -r line; do
   )
 
   coordinates=$( \
-    cat liste-des-gares.simple.csv \
+    cat flat-liste-des-gares.csv \
     | tr "[:lower:]" "[:upper:]" \
     | tr " " "-" \
     | sed 's/-TGV//' \
