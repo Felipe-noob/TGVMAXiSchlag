@@ -3,7 +3,7 @@
 set -e
 
 return_date=$1
-destination="PARIS (intramuros)"
+destination=$2
 
 destination_sed=$(echo $destination | sed 's/ /_/g')
 file_name="output/$destination_sed-$return_date.txt"
