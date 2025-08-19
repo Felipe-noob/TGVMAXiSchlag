@@ -50,8 +50,6 @@ while IFS= read -r line; do
 
   if [[ $line = "MONTAUBAN VILLE BOURBON" ]];
     then coordinates="1.341127241507155,44.014195331668475"
-  elif [[ -n $(echo $line | grep -i HBF) ]];
-    then continue
   fi
 
   if [[ $coordinates == "" ]];
