@@ -10,6 +10,14 @@ recode -f utf8..flat \
   < liste-des-gares.simple.csv \
   > flat-liste-des-gares.csv
 
+cat flat-liste-des-gares.csv \
+    | tr "[:lower:]" "[:upper:]" \
+    | tr " " "-" \
+    | sed 's/-TGV//' \
+    | sed 's/ST-/SAINT-/' \
+    | tr ";" "," \
+    > sncf.csv
+
 echo "Address,Long,Lat" > gares-geo.csv
 
 while IFS= read -r line; do
@@ -46,13 +54,7 @@ while IFS= read -r line; do
   fi
 
   coordinates=$( \
-    cat flat-liste-des-gares.csv \
-    | tr "[:lower:]" "[:upper:]" \
-    | tr " " "-" \
-    | sed 's/-TGV//' \
-    | sed 's/ST-/SAINT-/' \
-    | tr ";" "," \
-    | grep -m 1 -i "$line_filtered" \
+    grep -m 1 -i "$line_filtered" sncf.csv \
     | cut --delimiter "," --fields 4,5 \
   )
 
