@@ -7,15 +7,17 @@ echo "Address,Long,Lat" > gares-geo.csv
 while IFS= read -r line; do
   line_filtered=$( \
     echo $line \
+    | tr "[:lower:]" "[:upper:]" \
     | sed 's/ VILLE//' \
     | tr " " "-" \
     | sed 's/-TGV//' \
     | sed 's/ST-/SAINT-/' \
-    | sed 's/(intramuros)//' \
+    | sed 's/(INTRAMUROS)//' \
   )
 
   coordinates=$( \
     cat liste-des-gares.simple.csv \
+    | tr "[:lower:]" "[:upper:]" \
     | tr " " "-" \
     | sed 's/-TGV//' \
     | sed 's/ST-/SAINT-/' \
