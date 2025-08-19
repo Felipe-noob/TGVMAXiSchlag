@@ -2,6 +2,14 @@
 
 # set -e
 
+# prepare data base
+cut -d ";" -f 2,8,9,14,15 liste-des-gares.csv \
+  > liste-des-gares.simple.csv
+
+recode -f utf8..flat \
+  < liste-des-gares.simple.csv \
+  > flat-liste-des-gares.csv
+
 echo "Address,Long,Lat" > gares-geo.csv
 
 while IFS= read -r line; do
