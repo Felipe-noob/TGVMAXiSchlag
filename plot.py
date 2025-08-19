@@ -1,7 +1,11 @@
 import plotly.express as px
 import pandas as pd
+import sys
 
-df = pd.read_csv("data/gares-geo.csv")
+csvfile=sys.argv[1]
+print(csvfile)
+
+df = pd.read_csv(csvfile)
 
 df.dropna(
     axis=0,
