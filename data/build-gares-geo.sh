@@ -27,6 +27,8 @@ while IFS= read -r line; do
 
   if [[ $line = "L'ARGENTIERE LES ECRINS   (05)" ]]
     then line_filtered="L'ARGENTIERE-LES-ECRINS"
+  elif [[ $line = "MEUSE TGV" ]]
+    then line_filtered="LES-TROIS-DOMAINES"
   elif [[ $line = "RENNES" ]]
     then line_filtered=",RENNES,"
   elif [[ $line = "MOUTIERS SALINS BRIDES L BAINS" ]]
